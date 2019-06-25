@@ -25,12 +25,12 @@ resource "azurerm_subnet" "vm" {
 }
 
 resource "azurerm_network_interface" "vm" {
-  name                = "TerraformpovNetworkInterface1"
+  name                = TerraformpovNetworkInterface[0]
   location            = azurerm_resource_group.vm.location
   resource_group_name = azurerm_resource_group.vm.name
 
   ip_configuration {
-    name                          = "Terraformpovconfiguration[0]"
+    name                          = Terraformpovconfiguration[0]
     subnet_id                     = azurerm_subnet.vm[0].id
     private_ip_address_allocation = "Dynamic"
   }
@@ -39,7 +39,7 @@ resource "azurerm_network_interface" "vm" {
 }
 
 resource "azurerm_virtual_machine" "vm" {
-  name                  = "Terraformpov-vm"
+  name                  = Terraformpov-vm[0]
   location              = azurerm_resource_group.vm.location
   resource_group_name   = azurerm_resource_group.vm.name
   network_interface_ids = [azurerm_network_interface.vm.id]
