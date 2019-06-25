@@ -31,7 +31,7 @@ resource "azurerm_network_interface" "vm" {
 
   ip_configuration {
     name                          = "Terraformpovconfiguration1"
-    subnet_id                     = azurerm_subnet.vm.id
+    subnet_id                     = azurerm_subnet.vm[count.index].id
     private_ip_address_allocation = "Dynamic"
   }
 
