@@ -13,3 +13,13 @@ variable "tags" {
     "Appname" : "Azure Cloud Infra"
   }
 }
+
+variable "subnet_names" {
+  description = "noms des subnets"
+  type        = list(string)
+}
+
+variable "subnet_address_prefix" {
+  description = "adressage des subnets"
+  type        = list(string)
+}

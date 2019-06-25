@@ -16,10 +16,12 @@ resource "azurerm_virtual_network" "vm" {
 }
 
 resource "azurerm_subnet" "vm" {
-  name                 = "TerraformpovSubnet"
+  count                = length(var.subnet_names)
+  name                 = var.subnet_names
   resource_group_name  = azurerm_resource_group.vm.name
   virtual_network_name = azurerm_virtual_network.vm.name
-  address_prefix       = "10.0.1.0/24"
+  address_prefix       = var.subnet_address_prefix[count.index]
+  # "10.0.1.0/24"
 }
 
 resource "azurerm_network_interface" "vm" {
